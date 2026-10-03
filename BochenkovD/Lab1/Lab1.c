@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <math.h>
 int main() {
-	double dsp = 550, dvp = 800, tree = 400;
+	const double dsp = 550, dvp = 800, tree = 400;
 	double h, d, w;
 	printf("Enter the height, depth, width: ");
 	scanf("%lf%lf%lf", &h, &d, &w);
@@ -19,7 +19,7 @@ int main() {
 		double sides = 2 * (dsp * h_m * d_m * 0.015);
 		double caps = 2 * (dsp * w_m * d_m * 0.015);
 		double doors = tree * h_m * w_m * 0.01;
-		int num_shelves = (int)(h / 40.0);
+		int num_shelves = (int)((h - 3.0) / 40.0);
 		double inner_width = w_m - 2 * 0.015;
 		double v_one_shelf = inner_width * d_m * 0.005;
 		double shelves = num_shelves * v_one_shelf * dsp;
