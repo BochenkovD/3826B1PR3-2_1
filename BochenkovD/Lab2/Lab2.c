@@ -12,7 +12,8 @@ int main() {
 	scanf("%d", &mode);
 	if (mode < 1 || mode>2)
 	{
-		printf("Error");
+		printf("Error\n");
+		return 1;
 	}
 	if (mode == 1)
 	{
