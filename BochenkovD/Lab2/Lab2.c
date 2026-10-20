@@ -10,10 +10,16 @@ int main() {
 	printf("2.You think of a number, and the program guesses it.\n");
 	printf("Your choice: ");
 	scanf("%d", &mode);
-	if (mode < 1 || mode>2)
+	while (mode < 1 || mode>2)
 	{
-		printf("Error\n");
-		return 1;
+		printf("Enter number 1 or 2: ");
+		scanf("%d", &mode);
+		if (scanf("%d", &mode) != 1)
+		{
+			printf("\nPlease enter an integer.\n");
+			while (getchar() != '\n');
+			continue;
+		}
 	}
 	if (mode == 1)
 	{
@@ -25,6 +31,17 @@ int main() {
 		{
 			printf("Enter your guess: ");
 			scanf("%d", &guess);
+			if (scanf("%d", &guess) != 1)
+			{
+				printf("\nPlease enter an integer.\n");
+				while (getchar() != '\n');
+				continue;
+			}
+			while (guess > 1000 || guess < 0)
+			{
+				printf("The guess must be between 1 and 1000. Enter a valid number: ");
+				scanf("%d", &guess);
+			}
 			attemps++;
 			if (guess > target)
 			{
@@ -50,14 +67,14 @@ int main() {
 		printf("\nYou have selected mode 2. Think of a number from 1 to 1000, and the program will guess it.\n");
 		printf("Answer the guesses with the symbols: '>' (the hidden number is greater),\n");
 		printf(" '<' (the hidden number is less), '=' (the program guessed).\n");
-		while (1) 
+		while (1)
 		{
 			guess = low + (high - low) / 2;
 			attempts++;
 			printf("You guessed the number: %d?", guess);
 			int c;
 			while ((c = getchar()) != '\n' && c != EOF) {}
-			if (scanf_s("%c", &answer, 1) != 1) 
+			if (scanf_s("%c", &answer, 1) != 1)
 			{
 				continue;
 			}
@@ -73,12 +90,12 @@ int main() {
 				high = guess - 1;
 			}
 			else {
-				printf("Error.\n");
+				printf("Error\n");
 				attempts--;
 			}
-			if (low > high) 
+			if (low > high)
 			{
-				printf("Error");
+				printf("Error. Contradictory hints given\n");
 				break;
 			}
 		}
