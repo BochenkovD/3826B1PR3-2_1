@@ -29,9 +29,13 @@ int main() {
 	while (bulls != n) 
 	{
 		printf("Enter your %d-digit guess: ", n);
-		scanf(" %s", &guess);
+		scanf(" %5s", &guess);
 		if (strlen(guess) != n) {
 			printf("Error! ");
+			continue;
+		}
+		if (guess[0] == '0') {
+			printf("Error! The number cannot start with 0.\n");
 			continue;
 		}
 		bulls = 0;
@@ -60,7 +64,7 @@ int main() {
 			}
 		}
 		if (bulls == n) {
-			printf("Congratulations! You guessed the number %s!\n", secret);
+			printf("Congratulations! You guessed the number %5s!\n", secret);
 		}
 		else {
 			printf("Bulls: %d, Cows: %d\n", bulls, cows);
